@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Entries') }}</div>
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,17 +13,21 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <p>My entries:</p>
-                    <ul>
-                        @foreach ($entries as $entry )
-                            <li>
-                                <a href="{{ $entry->getUrl() }}">
-                                        {{ $entry->title }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
+                    
+                    @if ($entries->isEmpty())
+                        <p>You didn'y publish any entry yet.</p>
+                    @else
+                        <p>My entries:</p>
+                        <ul>
+                            @foreach ($entries as $entry )
+                                <li>
+                                    <a href="{{ $entry->getUrl() }}">
+                                            {{ $entry->title }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
             </div>
         </div>

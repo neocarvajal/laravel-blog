@@ -38,7 +38,7 @@ class EntryController extends Controller
 
     public function edit(Entry $entry)
     {
-        $this->authorize('update', $entry); //Metodo de autorizacion via Policies reemplazao por middleware de rutas
+        $this->authorize('update', $entry); //Metodo de autorizacion via Policies
 
         return view('entries.edit', compact('entry'));
     }

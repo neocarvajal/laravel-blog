@@ -25,10 +25,9 @@ Route::post('/entries', 'EntryController@store');
 
 Route::get('/entries/{entryBySlug}', 'GuestController@show');
 
-Route::get('/entries/{entry}/edit', 'EntryController@edit')
-->middleware('can:update,entry');
+Route::get('/entries/{entry}/edit', 'EntryController@edit');
+// ->middleware('can:update,entry'); Metodo para restringir via policies en rutas
 
-Route::put('/entries/{entry}', 'EntryController@update')
-->middleware('can:update,entry');
+Route::put('/entries/{entry}', 'EntryController@update');
 
-Route::get('/users/{user}', 'UserController@show');
+Route::get('/@{user}', 'UserController@show');
