@@ -25,8 +25,10 @@ Route::post('/entries', 'EntryController@store');
 
 Route::get('/entries/{entryBySlug}', 'GuestController@show');
 
-Route::get('/entries/{entry}/edit', 'EntryController@edit');
+Route::get('/entries/{entry}/edit', 'EntryController@edit')
+->middleware('can:update,entry');
 
-Route::put('/entries/{entry}', 'EntryController@update');
+Route::put('/entries/{entry}', 'EntryController@update')
+->middleware('can:update,entry');
 
 Route::get('/users/{user}', 'UserController@show');

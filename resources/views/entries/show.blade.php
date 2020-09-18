@@ -16,7 +16,7 @@
                 
                     {{ $entry->content }}
 
-                    @if ($entry->user_id == auth()->id())
+                    @can ('update', $entry)
                     
                     <hr>
 
@@ -24,7 +24,7 @@
                         Edit entry
                     </a>
 
-                    @endif
+                    @endcan
                    
                 </div>
             </div>

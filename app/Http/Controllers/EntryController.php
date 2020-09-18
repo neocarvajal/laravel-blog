@@ -38,11 +38,14 @@ class EntryController extends Controller
 
     public function edit(Entry $entry)
     {
+        $this->authorize('update', $entry); //Metodo de autorizacion via Policies reemplazao por middleware de rutas
+
         return view('entries.edit', compact('entry'));
     }
 
     public function update(Request $request, Entry $entry)
     {
+        $this->authorize('update', $entry);
        
         $validatedData = $request->validate([
             'title'   => 'required|min:7|max:255|unique:entries,id,'.$entry->id,
