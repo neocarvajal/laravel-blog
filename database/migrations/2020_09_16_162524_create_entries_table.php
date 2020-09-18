@@ -15,10 +15,16 @@ class CreateEntriesTable extends Migration
     {
         Schema::create('entries', function (Blueprint $table) {
             $table->id();
+            
             $table->string('title');
             $table->text('content');
+
+            // Author
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');            
+            $table->foreign('user_id')->references('id')->on('users');
+            // Slug
+            $table->string('slug');
+
             $table->timestamps();
         });
     }
